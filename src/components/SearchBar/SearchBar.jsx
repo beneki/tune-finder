@@ -13,7 +13,7 @@ function SearchBar() {
     e.preventDefault();
     if (validateSearchText(searchTxt)) {
       searchMusic(searchTxt);
-      setSearchTxt(''); // Clear input after search
+
     } else {
       alert('Please enter at least 3 characters.');
     }
@@ -21,7 +21,8 @@ function SearchBar() {
 
   useEffect(() => {
     if (success) {
-      navigate('/musics');
+      navigate(`/musics/${searchTxt}`);
+      setSearchTxt(''); // Clear input after search
     }
   }, [success, navigate]);
 

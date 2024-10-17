@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { MusicCard } from '..';
 import useMusicSearch from '../../hooks/useMusicSearch';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const throttle = (func, limit) => {
     let lastFunc;
@@ -30,6 +30,7 @@ const throttle = (func, limit) => {
 const pageSize = 12;
 const MusicList = () => {
     const navigate = useNavigate();
+    const { term } = useParams();
     const { searchMusic, loading, error } = useMusicSearch();
     const batchResult = useSelector((state) => state.music.results);
     const [musicPage, setMusicPage] = useState([]);
@@ -40,7 +41,8 @@ const MusicList = () => {
     // Initial fetch when the component mounts
     useEffect(() => {
         if (batchResult.length < 1 && !hasSearchedRef.current) {
-            searchMusic('pop'); // Fetch the first 6 tracks
+            const serachterm = term || 'pop';
+            searchMusic(serachterm); // Fetch the first 6 tracks
             hasSearchedRef.current = true;
         }
     }, [searchMusic]);
@@ -119,8 +121,6 @@ const MusicList = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, [batchResult]);
-
-
 
     return (
         <div className="container mx-auto p-4">
