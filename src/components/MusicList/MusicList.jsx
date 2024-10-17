@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { MusicCard } from '..';
 import useMusicSearch from '../../hooks/useMusicSearch';
-
+import { useNavigate } from 'react-router-dom';
 
 const throttle = (func, limit) => {
     let lastFunc;
@@ -29,6 +29,7 @@ const throttle = (func, limit) => {
 // since the iTune api is not providing pagination structure so I used in memory pagination for scrolling
 const pageSize = 12;
 const MusicList = () => {
+    const navigate = useNavigate();
     const { searchMusic, loading, error } = useMusicSearch();
     const batchResult = useSelector((state) => state.music.results);
     const [musicPage, setMusicPage] = useState([]);
@@ -123,6 +124,12 @@ const MusicList = () => {
 
     return (
         <div className="container mx-auto p-4">
+            <button
+                onClick={() => navigate('/')}
+                className="mb-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+            >
+                Back
+            </button>
             <h1 className="text-2xl font-bold mb-4">Music List</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {musicPage.map((music) => (
@@ -132,7 +139,7 @@ const MusicList = () => {
             {loading && <p>Loading...</p>}
             {loadingMore && <p>Loading more tracks...</p>}
             {error && <p className="text-red-500">{error}</p>}
-        </div>
+        </div >
     );
 };
 
