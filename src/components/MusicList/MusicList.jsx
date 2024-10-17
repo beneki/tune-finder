@@ -80,8 +80,7 @@ const MusicList = () => {
     const loadPrevTracks = () => {
         const { size, lastIx } = pageConfig.current;
 
-
-        if (loadingMore || size === 0) return;
+        if (loadingMore || size === 0 || lastIx <= pageSize) return;
 
         setLoadingMore(true);
 
