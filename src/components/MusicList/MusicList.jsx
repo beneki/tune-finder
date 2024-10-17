@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const MusicList = () => {
-    const results = useSelector((state) => state.music.searchResults);
+    const results = useSelector((state) => state.music.results);
 
     return (
         <div>
