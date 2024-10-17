@@ -39,7 +39,7 @@ const MusicList = () => {
 
     // Initial fetch when the component mounts
     useEffect(() => {
-        if (!hasSearchedRef.current) {
+        if (batchResult.length < 1 && !hasSearchedRef.current) {
             searchMusic('pop'); // Fetch the first 6 tracks
             hasSearchedRef.current = true;
         }
