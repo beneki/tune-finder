@@ -1,30 +1,36 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setMusic } from '../slices/musicSlice'; // Adjust the path as needed
+import React, { useState } from 'react';
+import useMusicSearch from '../../hooks/useMusicSearch';
 
-const useMusicSearch = () => {
+function SearchBar() {
   const [searchTxt, setSearchTxt] = useState('');
-  const dispatch = useDispatch();
+  const { searchMusic } = useMusicSearch();
 
-  const searchMusic = async (e) => {
+  const validateSearchText = (text) => text.trim().length > 2; // Minimum 3 characters
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const trimmedSearchTxt = searchTxt.trim();
-
-    if (!trimmedSearchTxt) return;
-
-    try {
-      const response = await fetch(`https://itunes.apple.com/search?term=${trimmedSearchTxt}`);
-      const data = await response.json();
-
-      if (data.results && data.results.length > 0) {
-        dispatch(setMusic(data.results)); // Save response in Redux state
-      }
-    } catch (error) {
-      console.error('Error fetching music:', error);
+    if (validateSearchText(searchTxt)) {
+      searchMusic(searchTxt);
+      setSearchTxt(''); // Clear input after search
+    } else {
+      alert('Please enter at least 3 characters.');
     }
   };
 
-  return { searchTxt, setSearchTxt, searchMusic };
-};
+  return (
+    <nav className="navbar">
+      <form className="search-bar" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={searchTxt}
+          onChange={(e) => setSearchTxt(e.target.value)}
+          placeholder="Search your music"
+          className="input" // Optional: Add Tailwind classes for styling
+        />
+        <button type="submit" className="button">Search</button> {/* Optional: Tailwind styling */}
+      </form>
+    </nav>
+  );
+}
 
-export default useMusicSearch;
+export default SearchBar;
