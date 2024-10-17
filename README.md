@@ -1,3 +1,4 @@
+
 # Music Search App
 
 A simple and responsive web application built with Vite.js that allows users to search for music using the [iTunes API](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/iTuneSearchAPI/index.html).
@@ -14,7 +15,7 @@ A simple and responsive web application built with Vite.js that allows users to 
 
 ## Features
 
-- Search for music by artist, album, or song title in Itunes.
+- Search for music by artist, album, or song title in iTunes.
 
 ## Technologies Used
 
@@ -27,16 +28,22 @@ A simple and responsive web application built with Vite.js that allows users to 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/beneki/
-``
+   git clone https://github.com/beneki/<repository-name>.git
+   ```
 
-2. Install Dependencies
+2. Install dependencies:
    ```bash
    yarn install
-``
+   ```
 
-3. Run the project
+3. Run the project:
    ```bash
    yarn dev
-```
+   ```
+
+## API Reference
+
+- Usese iTunes API
+
+
 
