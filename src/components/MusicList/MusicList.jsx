@@ -106,9 +106,9 @@ const MusicList = () => {
 
     useEffect(() => {
         const handleScroll = throttle(() => {
-            // Check if scrolled to the top
             if (document.documentElement.scrollTop === 0) {
                 loadPrevTracks(); // Call the additional function when at the top
+                lastScroll = document.documentElement.scrollTop = 35; // manually change the scroll position to give better ux
             }
             if (
                 window.innerHeight + document.documentElement.scrollTop >=
