@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { SearchBar } from './../index'
+import { SearchBar } from './../'
 
 const Dashboard = () => {
     const [query, setQuery] = useState('');
