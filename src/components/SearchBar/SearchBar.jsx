@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useMusicSearch from '../../hooks/useMusicSearch';
+import { useNavigate } from 'react-router-dom'
+
 
 function SearchBar() {
+  const navigate = useNavigate();
   const [searchTxt, setSearchTxt] = useState('');
-  const { searchMusic } = useMusicSearch();
+  const { searchMusic, loading, error, success } = useMusicSearch();
 
   const validateSearchText = (text) => text.trim().length > 2; // Minimum 3 characters
 
@@ -16,6 +19,12 @@ function SearchBar() {
       alert('Please enter at least 3 characters.');
     }
   };
+
+  useEffect(() => {
+    if (success) {
+      navigate('/musics');
+    }
+  }, [success, navigate]);
 
   return (
     <nav className="navbar">
