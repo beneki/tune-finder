@@ -41,8 +41,8 @@ const MusicList = () => {
     // Initial fetch when the component mounts
     useEffect(() => {
         if (batchResult.length < 1 && !hasSearchedRef.current) {
-            const serachterm = term || 'pop';
-            searchMusic(serachterm); // Fetch the first 6 tracks
+            const searchTerm = term || 'pop';
+            searchMusic(searchTerm); // Fetch the first 6 tracks
             hasSearchedRef.current = true;
         }
     }, [searchMusic]);
@@ -125,7 +125,7 @@ const MusicList = () => {
     return (
         <div className="container mx-auto p-4">
             <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate(-1)}
                 className="mb-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
             >
                 Back

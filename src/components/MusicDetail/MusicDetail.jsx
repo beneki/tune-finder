@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useMusicSearch from '../../hooks/useMusicSearch';
-import { useNavigate } from 'react-router-dom';
 
 const MusicDetail = () => {
     const { id } = useParams();
@@ -49,7 +48,7 @@ const MusicDetail = () => {
     return (
         <div className="max-w-2xl mx-auto p-6 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg shadow-lg text-white mt-6">
             <button
-                onClick={() => navigate('/musics')}
+                onClick={() => navigate(-1)}
                 className="mb-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
             >
                 Back
