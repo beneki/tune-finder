@@ -1,0 +1,9 @@
+.navbar {
+    width: 100%;
+}
+
+.search-bar {
+    width: 50%;
+    position: absolute;
+    left: 40%;
+}
