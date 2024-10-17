@@ -8,7 +8,7 @@ const MusicList = () => {
     const results = useSelector((state) => state.music.results);
     const hasSearchedRef = useRef(false); // Track if a search has been made
 
-    // Fetch music only if results are empty and no search has been initiated
+    // Fetch music only if results are empty and no search has been initiated (this is for when user navigates manually to the /musics route, without any search preference)
     useEffect(() => {
         if (results.length === 0 && !hasSearchedRef.current) {
             searchMusic('pop');
