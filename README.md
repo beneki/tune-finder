@@ -43,7 +43,7 @@ A simple and responsive web application built with Vite.js that allows users to 
 
 ## API Reference
 
-- Usese iTunes API
+- Uses iTunes API
 
 
 
