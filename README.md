@@ -24,11 +24,15 @@ A simple and responsive web application built with Vite.js that allows users to 
 - **CSS** / **Tailwind CSS**: For styling (if applicable).
 - **iTunes API**: For retrieving music data.
 
+## pre-installation
+
+Expected node version: "^18.18.0 or ^20.9.0 or >=21.1.0" for @eslint/js
+
 ## Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/beneki/<repository-name>.git
+   git clone https://github.com/beneki/tune-finder.git
    ```
 
 2. Install dependencies:
@@ -44,6 +48,4 @@ A simple and responsive web application built with Vite.js that allows users to 
 ## API Reference
 
 - Uses iTunes API
-
-
 
